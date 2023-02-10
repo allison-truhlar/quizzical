@@ -1,12 +1,23 @@
 import React from "react"
-import LandingPage from "./LandingPage"
+import LandingPage from "./Components/LandingPage"
+import QuizPage from "./Components/QuizPage"
 
 function App() {
+
+  const [startQuiz, setStartQuiz] = React.useState(false)
+
+  function toggleStartQuiz(){
+    setStartQuiz(prevStartQuiz => !prevStartQuiz)
+  }
+
   return(
     <main>
       <div className="app-container">
         <img src="./yellow-blob.png" className="app-topBlob"/>
-        <LandingPage/>
+        {startQuiz ? 
+          <QuizPage/> : 
+          <LandingPage toggleStartQuiz={toggleStartQuiz} />
+        }
       </div>
     </main>
   )
