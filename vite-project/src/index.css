@@ -15,6 +15,7 @@ main{
 }
 
 .app-container{
+  position: relative;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -23,6 +24,12 @@ main{
   height: 80%;
   width: 80%;
   background: #F5F7FB;
+}
+
+.app-topBlob{
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 /* Landing page --------------------------------------*/
@@ -43,4 +50,10 @@ main{
   color: #F5F7FB;
   padding: 1em 3em;
   cursor: pointer;
+}
+
+.landingPage-bottomBlob{
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
