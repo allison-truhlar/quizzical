@@ -3,9 +3,11 @@ import LandingPage from "./LandingPage"
 
 function App() {
   return(
-    <div>
-      <LandingPage/>
-    </div>
+    <main>
+      <div className="app-container">
+        <LandingPage/>
+      </div>
+    </main>
   )
 }
 

@@ -4,4 +4,43 @@
 
 body{
   margin: 0;
+  background: #4D5B9E;
+  font-family: "Karla","sans-serif";
+}
+
+main{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.app-container{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 80%;
+  width: 80%;
+  background: #F5F7FB;
+}
+
+/* Landing page --------------------------------------*/
+
+.landingPage-title{
+  margin-bottom: 1em;
+  font-size: 2rem;
+  color: #293264;
+}
+
+.landingPage-btn{
+  background: #4D5B9E;
+  border-radius: 1rem;
+  border: none;
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 1rem;
+  color: #F5F7FB;
+  padding: 1em 3em;
+  cursor: pointer;
 }
