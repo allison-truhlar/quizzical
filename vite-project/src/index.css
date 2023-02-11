@@ -24,12 +24,24 @@ main{
   height: 80%;
   width: 80%;
   background: #F5F7FB;
+  border-radius: 4px;
 }
+
+/* Background blob styling ----------------------------*/
 
 .app-topBlob{
   position: absolute;
   top: 0;
   right: 0;
+  border-radius: 4px;
+}
+
+.landingPage-bottomBlob,
+.quizPage-bottomBlob{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 4px;
 }
 
 /* Landing page --------------------------------------*/
@@ -40,20 +52,27 @@ main{
   color: #293264;
 }
 
-.landingPage-btn{
-  background: #4D5B9E;
-  border-radius: 1rem;
+/* Buttons --------------------------------------*/
+
+.landingPage-btn,
+.quizPage-btn{
   border: none;
-  font-family: 'Inter';
-  font-weight: 500;
-  font-size: 1rem;
+  background: #4D5B9E;
+  font-family: 'Inter','sans serif';
   color: #F5F7FB;
-  padding: 1em 3em;
   cursor: pointer;
 }
 
-.landingPage-bottomBlob{
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.landingPage-btn{
+  border-radius: 16px;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 1em 3em;
+}
+
+.quizPage-btn{
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.65rem;
+  padding: 1em 2em;
 }
