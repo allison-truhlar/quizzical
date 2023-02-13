@@ -15,10 +15,14 @@ main{
 }
 
 .app-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   position: relative;
   margin: auto;
-  height: 80%;
-  width: 80%;
+  height: 90%;
+  width: 90%;
   background: #F5F7FB;
   border-radius: 4px;
   background-image: url("./yellow-blob.png"), url("./blue-blob.png");
@@ -26,24 +30,31 @@ main{
   background-repeat: no-repeat;
 }
 
-/* Background blob styling ----------------------------*/
+/* Landing page --------------------------------------*/
 
-.app-topBlob{
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 4px;
+.landingPage-container{
+  margin: auto; 
 }
 
-.landingPage-bottomBlob,
-.quizPage-bottomBlob{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-radius: 4px;
+.landingPage-title{
+  margin-bottom: 1em;
+  font-size: 2rem;
+  color: #293264;
 }
 
-/* Buttons --------------------------------------*/
+/* Quiz page ------------------------------------------*/
+
+.quizPage-container{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 2em 0 2em;
+  max-height: 95%;
+  overflow-y: scroll;
+  text-align: left;
+}
+
+/* Landing page and Quiz page main buttons --------------------------------------*/
 
 .landingPage-btn,
 .quizPage-btn{
@@ -62,35 +73,11 @@ main{
 }
 
 .quizPage-btn{
+  align-self: center;
   border-radius: 10px;
   font-weight: 600;
   font-size: 0.65rem;
   padding: 1em 2em;
-}
-
-/* Landing page --------------------------------------*/
-
-.landingPage-container{
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.landingPage-title{
-  margin-bottom: 1em;
-  font-size: 2rem;
-  color: #293264;
-}
-
-/* Quiz page ------------------------------------------*/
-
-.quizPage-container{
-  border:1px solid red;
-  margin: 3em 2em 0.5em 2em;
-  text-align: left;
 }
 
 /* Question question ---------------------------------*/
@@ -101,9 +88,24 @@ main{
 }
 
 .quizQuestion-question{
-  margin: 0;
+  margin: 0 0 0.75em 0;
   font-size: 1rem;
   line-height: 1.1;
   color: #293264;
+}
+
+.quizQuestion-btn{
+  margin:0 1.25em 1.5em 0; 
+  padding: 0.4em 1.5em;
+  border: 0.8px solid #4D5B9E;
+  border-radius: 8px;
+  background: #F5F7FB;
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 0.65rem;
+  text-align: center;
+  color: #293264;
+  cursor: pointer;
+
 }
 
