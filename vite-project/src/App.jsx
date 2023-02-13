@@ -23,7 +23,6 @@ function App() {
   return(
     <main>
       <div className="app-container">
-        <img src="./yellow-blob.png" className="app-topBlob"/>
         {startQuiz ? 
           <QuizPage quizData={quizData}/> : 
           <LandingPage toggleStartQuiz={toggleStartQuiz} />

@@ -1,5 +1,5 @@
 import React from "react"
-import QuizSection from "./QuizSection"
+import QuizQuestion from "./QuizQuestion"
 import { nanoid } from 'nanoid'
 
 export default function QuizPage(props){
@@ -9,7 +9,7 @@ export default function QuizPage(props){
         const decodedIncorrectAnswers = 
             quiz.incorrect_answers.map(answer => atob(answer))
 
-        return (<QuizSection
+        return (<QuizQuestion
             key = {nanoid()}
             question = {atob(quiz.question)}
             answers = {[...decodedIncorrectAnswers, atob(quiz.correct_answer)]}
@@ -17,10 +17,9 @@ export default function QuizPage(props){
     })
 
     return(
-        <div>
+        <div className="quizPage-container">
             {quizElements}
             <button className="quizPage-btn">Check answers</button>
-            <img src="./quizPage-blue-blob.png" className="quizPage-bottomBlob"/>
         </div>
     )
 }

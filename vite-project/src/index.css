@@ -17,14 +17,13 @@ main{
 .app-container{
   position: relative;
   margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   height: 80%;
   width: 80%;
   background: #F5F7FB;
   border-radius: 4px;
+  background-image: url("./yellow-blob.png"), url("./blue-blob.png");
+  background-position: right top, left bottom;
+  background-repeat: no-repeat;
 }
 
 /* Background blob styling ----------------------------*/
@@ -42,14 +41,6 @@ main{
   bottom: 0;
   left: 0;
   border-radius: 4px;
-}
-
-/* Landing page --------------------------------------*/
-
-.landingPage-title{
-  margin-bottom: 1em;
-  font-size: 2rem;
-  color: #293264;
 }
 
 /* Buttons --------------------------------------*/
@@ -76,3 +67,43 @@ main{
   font-size: 0.65rem;
   padding: 1em 2em;
 }
+
+/* Landing page --------------------------------------*/
+
+.landingPage-container{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.landingPage-title{
+  margin-bottom: 1em;
+  font-size: 2rem;
+  color: #293264;
+}
+
+/* Quiz page ------------------------------------------*/
+
+.quizPage-container{
+  border:1px solid red;
+  margin: 3em 2em 0.5em 2em;
+  text-align: left;
+}
+
+/* Question question ---------------------------------*/
+
+.quizQuestion-container{
+  margin-bottom: 1em;
+  border-bottom: 0.794239px solid #DBDEF0;
+}
+
+.quizQuestion-question{
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.1;
+  color: #293264;
+}
+
