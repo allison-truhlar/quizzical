@@ -2,17 +2,35 @@ import React from "react"
 import QuizQuestion from "./QuizQuestion"
 import { nanoid } from 'nanoid'
 
-export default function QuizPage(props){
+export default function QuizPage(){
 
-    const quizElements = props.quizData.map(quiz => {
+    const [quizData, setQuizData] = React.useState([])
 
-        const decodedIncorrectAnswers = 
-            quiz.incorrect_answers.map(answer => atob(answer))
+    React.useEffect(()=>{
+        fetch("https://opentdb.com/api.php?amount=5&encode=base64")
+            .then(response => response.json())
+            .then(triviaData => {
+                const transformedTriviaData = triviaData.results.map(result => {
+                    // console.log({...result, id:nanoid()})
+                    const decodedIncorrectAnswers = 
+                    result.incorrect_answers.map(answer => atob(answer))
+                    return({
+                        ...result,
+                        id: nanoid(),
+                        question: atob(result.question),
+                        allAnswers: [...decodedIncorrectAnswers, atob(result.correct_answer)]
+                    })
+                })
+                setQuizData(transformedTriviaData)
+            })
+            .then(console.log(quizData))
+      },[])
 
+    const quizElements = quizData.map(quiz => {
         return (<QuizQuestion
-            key = {nanoid()}
-            question = {atob(quiz.question)}
-            answers = {[...decodedIncorrectAnswers, atob(quiz.correct_answer)]}
+            key = {quiz.id}
+            question = {quiz.question}
+            answers = {quiz.allAnswers}
         />)
     })
 
