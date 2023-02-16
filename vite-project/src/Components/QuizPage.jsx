@@ -1,5 +1,6 @@
 import React from "react"
 import QuizQuestion from "./QuizQuestion"
+import QuizAnswer from "./QuizAnswer"
 import { nanoid } from 'nanoid'
 
 export default function QuizPage(){
@@ -28,8 +29,9 @@ export default function QuizPage(){
 
                 const answerData = questionData.map(question =>{
                     const currentCorrectAnswer = question.correctAnswer
-                    console.log(currentCorrectAnswer)
-                    return question.allAnswers.map(answer =>{
+                    const questionId = question.questionId
+                    // console.log(currentCorrectAnswer)
+                    return(question.allAnswers.map(answer =>{
                         const answerId = nanoid()
                         const isCorrectAnswer = (answer==currentCorrectAnswer ? true : false)
                         return({
@@ -38,7 +40,7 @@ export default function QuizPage(){
                             isCorrectAnswer: isCorrectAnswer,
                             isSelected:false
                         })
-                    })
+                    }))
                 })
                 setQuizAnswers(answerData)
                 console.log(answerData)
@@ -47,32 +49,32 @@ export default function QuizPage(){
             // .then(console.log(quizData))
       },[])
 
-   
-    //   const quizAnswerElements = quizAnswers.map(answer => {
-    //     return(
-    //         <QuizAnswer
-    //             key={answer.id}
-    //             id={answer.id}
-    //             answers = {answer.allAnswers}
-    //             correctAnswer = {answer.correct_answer}
-    //             isSelected = {answer.isSelected}
-    //         />
-    //     )
-    // })
-
-    const quizElements = quizData.map(quiz => {
+       
+      const quizElements = quizData.map((quiz, index) => {
+        const matchingQuizAnswers = quizAnswers[index]
+        console.log(matchingQuizAnswers)
+        const quizAnswerElements = matchingQuizAnswers.map(answer => {
+            return(
+                <QuizAnswer
+                    key={answer.answerId}
+                    id={answer.answerId}
+                    answer = {answer.answer}
+                    isCorrectAnswer = {answer.isCorrectAnswer}
+                    isSelected = {answer.isSelected}
+                />)
+        })
         return (
-            <div>
+            <div className="quizElement-container">
                 <QuizQuestion
                     key = {quiz.questionId}
                     question = {quiz.question}
-                    answers = {quiz.allAnswers}
-                    correctAnswer = {quiz.correct_answer}
                 />
-                {/* {quizAnswerElements} */}
+               {quizAnswerElements}
             </div>
         )
     })
+
+    
 
     return(
         <div className="quizPage-container">

@@ -5,7 +5,6 @@ import QuizPage from "./Components/QuizPage"
 function App() {
 
   const [startQuiz, setStartQuiz] = React.useState(false)
-  const [quizData, setQuizData] = React.useState([])
 
   function toggleStartQuiz(){
     setStartQuiz(prevStartQuiz => !prevStartQuiz)
