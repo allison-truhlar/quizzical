@@ -46,15 +46,15 @@ export default function QuizPage(){
 
  
     function shuffle(array){
-                for (let i=0; i<array.length; i++){
-                    const randomIndex = Math.floor(Math.random() * array.length)
-                    const currentArrayItem = array[i]
-                    // Replace the item at the current index location with the item from the random index location
-                    array[i] = array[randomIndex]
-                    // Move currentArrayItem to the random index location
-                    array[randomIndex] = currentArrayItem
-                }
-                return array
+            for (let i=0; i<array.length; i++){
+                const randomIndex = Math.floor(Math.random() * array.length)
+                const currentArrayItem = array[i]
+                // Replace the item at the current index location with the item from the random index location
+                array[i] = array[randomIndex]
+                // Move currentArrayItem to the random index location
+                array[randomIndex] = currentArrayItem
+            }
+        return array
     }
       
     function selectAnswer(id){
