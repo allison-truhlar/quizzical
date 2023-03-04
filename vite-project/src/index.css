@@ -82,7 +82,7 @@ main{
 
 /* Question question ---------------------------------*/
 
-.quizQuestion-container{
+.quizElement-container{
   margin-bottom: 1em;
   border-bottom: 0.794239px solid #DBDEF0;
 }
@@ -94,18 +94,21 @@ main{
   color: #293264;
 }
 
-.quizQuestion-btn{
+.quizAnswer-container{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.quizAnswer-btn{
   margin:0 1.25em 1.5em 0; 
   padding: 0.4em 1.5em;
   border: 0.8px solid #4D5B9E;
   border-radius: 8px;
-  background: #F5F7FB;
   font-family: 'Inter';
   font-weight: 500;
   font-size: 0.65rem;
-  text-align: center;
   color: #293264;
   cursor: pointer;
-
 }
 
