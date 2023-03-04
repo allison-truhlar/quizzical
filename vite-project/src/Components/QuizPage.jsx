@@ -57,7 +57,11 @@ export default function QuizPage(){
     function selectAnswer(id){
         setQuizAnswers(oldQuizAnswers => oldQuizAnswers.map(answerSet => {
             return answerSet.map(singleAnswer =>{
-                return singleAnswer.id === id ? {...singleAnswer, isSelected: !singleAnswer.isSelected} : singleAnswer
+                if (singleAnswer.id === id || singleAnswer.isSelected === true){
+                    return {...singleAnswer, isSelected: !singleAnswer.isSelected}
+                } else {
+                    return singleAnswer
+                } 
             })
         }))
     }
@@ -65,7 +69,6 @@ export default function QuizPage(){
     const quizElements = quizQuestions.map((question, index) => {
         const correspondingAnswerSet = quizAnswers[index]
         const quizAnswerElements = correspondingAnswerSet.map(answer => {
-            console.log(answer.isSelected)
             return(
                 <QuizAnswer
                     key={answer.id}
