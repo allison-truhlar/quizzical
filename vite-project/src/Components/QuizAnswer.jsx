@@ -3,7 +3,9 @@ import React from "react"
 export default function QuizAnswer(props){
 
     let hexCode = ""
+    let isDisabled = false
     if (props.hasBeenChecked) {
+        isDisabled = true
         if (props.isCorrectAnswer) {
             hexCode = "#94D7A2"
         } else if (props.isSelected) {
@@ -17,7 +19,12 @@ export default function QuizAnswer(props){
     const styles={backgroundColor: hexCode}
 
     return(
-        <button className="quizAnswer-btn" style={styles} onClick={()=>props.selectAnswer(props.answerId, props.questionId)}>
+        <button 
+            className="quizAnswer-btn" 
+            style={styles} 
+            disabled = {isDisabled}
+            onClick={()=>props.selectAnswer(props.answerId, props.questionId)}
+        >
         {props.answer}
         </button>   
     )
