@@ -5,22 +5,25 @@ import { nanoid } from 'nanoid'
 
 export default function QuizPage(){
 
-    const [quizData, setQuizData] = React.useState([])
-    // const [quizAnswers, setQuizAnswers] = React.useState([])
+    const [quizQuestions, setQuizQuestions] = React.useState([])
+    const [quizAnswers, setQuizAnswers] = React.useState([])
 
     React.useEffect(()=>{
         fetch("https://opentdb.com/api.php?amount=5&encode=base64")
             .then(response => response.json())
             .then(triviaData => {
                 
-                const questionData = triviaData.results.map(result => {
-                    const question = atob(result.question)
+                const questions = triviaData.results.map(result =>{
+                    return atob(result.question)
+                })
+
+                const answers = triviaData.results.map(result => {
                     const correctAnswer = atob(result.correct_answer)
                     const incorrect_answers = result.incorrect_answers.map(answer => atob(answer))
                     const allAnswers = [...incorrect_answers, correctAnswer]
                     const shuffledAnswers = shuffle(allAnswers)
                     
-                    const questionAndAnswerData = shuffledAnswers.map(answer =>{
+                    return shuffledAnswers.map(answer =>{
                         const answerId = nanoid()
                         const isCorrectAnswer = (answer==correctAnswer ? true : false)
                         return(
@@ -31,49 +34,38 @@ export default function QuizPage(){
                                 isSelected:false
                             }
                         )
-                    })
-
-                    return(
-                        {
-                            question: question,
-                            answers: questionAndAnswerData
-                        }
-                    )
+                    })   
                 })
-                setQuizData(questionData)
+                setQuizQuestions(questions)
+                setQuizAnswers(answers)
             })
-        },[])
+    },[])
 
  
     function shuffle(array){
-                for (let i=0; i<array.length; i++){
-                    const randomIndex = Math.floor(Math.random() * array.length)
-                    const currentArrayItem = array[i]
-                    // Replace the item at the current index location with the item from the random index location
-                    array[i] = array[randomIndex]
-                    // Move currentArrayItem to the random index location
-                    array[randomIndex] = currentArrayItem
-                }
-                return array
+            for (let i=0; i<array.length; i++){
+                const randomIndex = Math.floor(Math.random() * array.length)
+                const currentArrayItem = array[i]
+                // Replace the item at the current index location with the item from the random index location
+                array[i] = array[randomIndex]
+                // Move currentArrayItem to the random index location
+                array[randomIndex] = currentArrayItem
+            }
+        return array
     }
       
     function selectAnswer(id){
-        const newQuizData = quizData.map(question => {
-            const updatedAnswers = question.answers.map(answer => {
-                return answer.id === id ? {...answer, isSelected: !answer.isSelected} : answer
+        setQuizAnswers(oldQuizAnswers => oldQuizAnswers.map(answerSet => {
+            return answerSet.map(singleAnswer =>{
+                return singleAnswer.id === id ? {...singleAnswer, isSelected: !singleAnswer.isSelected} : singleAnswer
             })
-            return (
-                {
-                    ...question,
-                    answers: updatedAnswers
-                }
-            )
-        })
-        setQuizData(newQuizData)
+        }))
     }
 
-    const quizElements = quizData.map(singleQuestion => {
-        const quizAnswerElements = singleQuestion.answers.map(answer => {
+    const quizElements = quizQuestions.map((question, index) => {
+        const correspondingAnswerSet = quizAnswers[index]
+        const quizAnswerElements = correspondingAnswerSet.map(answer => {
+            console.log(answer.isSelected)
             return(
                 <QuizAnswer
                     key={answer.id}
@@ -89,7 +81,7 @@ export default function QuizPage(){
             <div className="quizElement-container">
                 <QuizQuestion
                     key = {nanoid()}
-                    question = {singleQuestion.question}
+                    question = {question}
                 />
                 <div className="quizAnswer-container">
                     {quizAnswerElements}
@@ -99,8 +91,6 @@ export default function QuizPage(){
         
     })
     
-    
-
     return(
         <div className="quizPage-container">
             {quizElements}
