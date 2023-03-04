@@ -16,8 +16,10 @@ export default function QuizPage(){
                 const questions = triviaData.results.map(result =>{
                     return atob(result.question)
                 })
+                
 
                 const answers = triviaData.results.map(result => {
+                    const questionId = nanoid()
                     const correctAnswer = atob(result.correct_answer)
                     const incorrect_answers = result.incorrect_answers.map(answer => atob(answer))
                     const allAnswers = [...incorrect_answers, correctAnswer]
@@ -28,10 +30,12 @@ export default function QuizPage(){
                         const isCorrectAnswer = (answer==correctAnswer ? true : false)
                         return(
                             {
-                                id:answerId,
+                                questionId: questionId,
+                                answerId:answerId,
                                 answer: answer,
                                 isCorrectAnswer: isCorrectAnswer,
-                                isSelected:false
+                                isSelected: false,
+                                hasBeenChecked: false
                             }
                         )
                     })   
@@ -54,28 +58,46 @@ export default function QuizPage(){
         return array
     }
       
-    function selectAnswer(id){
+    function selectAnswer(answerId, questionId){
+        console.log(answerId, questionId)
         setQuizAnswers(oldQuizAnswers => oldQuizAnswers.map(answerSet => {
-            return answerSet.map(singleAnswer =>{
-                if (singleAnswer.id === id || singleAnswer.isSelected === true){
-                    return {...singleAnswer, isSelected: !singleAnswer.isSelected}
-                } else {
-                    return singleAnswer
-                } 
+            const answerSetId = answerSet[0].questionId
+            if (answerSetId === questionId){
+                return answerSet.map(singleAnswer =>{
+                    if (singleAnswer.answerId === answerId || singleAnswer.isSelected === true){
+                        return {...singleAnswer, isSelected: !singleAnswer.isSelected}
+                    } else {
+                        return singleAnswer
+                    } 
+                })
+            } else {
+                return answerSet
+            }
+            
+        }))
+    }
+
+    function checkAnswers(){
+        setQuizAnswers(oldQuizAnswers => oldQuizAnswers.map(answerSet => {
+            return answerSet.map(singleAnswer => {
+                return {...singleAnswer, hasBeenChecked: true}
             })
         }))
     }
+
 
     const quizElements = quizQuestions.map((question, index) => {
         const correspondingAnswerSet = quizAnswers[index]
         const quizAnswerElements = correspondingAnswerSet.map(answer => {
             return(
                 <QuizAnswer
-                    key={answer.id}
-                    id={answer.id}
+                    key={answer.answerId}
+                    questionId={answer.questionId}
+                    answerId={answer.answerId}
                     answer = {answer.answer}
                     isCorrectAnswer = {answer.isCorrectAnswer}
                     isSelected = {answer.isSelected}
+                    hasBeenChecked = {answer.hasBeenChecked}
                     selectAnswer = {selectAnswer}
                 />)
         })
@@ -97,7 +119,7 @@ export default function QuizPage(){
     return(
         <div className="quizPage-container">
             {quizElements}
-            <button className="quizPage-btn">Check answers</button>
+            <button className="quizPage-btn" onClick={checkAnswers}>Check answers</button>
         </div>
     )
  
