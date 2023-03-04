@@ -59,7 +59,6 @@ export default function QuizPage(){
     }
       
     function selectAnswer(answerId, questionId){
-        console.log(answerId, questionId)
         setQuizAnswers(oldQuizAnswers => oldQuizAnswers.map(answerSet => {
             const answerSetId = answerSet[0].questionId
             if (answerSetId === questionId){
@@ -78,11 +77,20 @@ export default function QuizPage(){
     }
 
     function checkAnswers(){
+        const initialValue = 0
+        const correctSelections = quizAnswers.map(answerSet => {
+            return answerSet.filter(answer => answer.isCorrectAnswer && answer.isSelected).length
+        })
+        console.log(correctSelections)
+        const numCorrectSelection = correctSelections.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
+        console.log(numCorrectSelection)
+
         setQuizAnswers(oldQuizAnswers => oldQuizAnswers.map(answerSet => {
             return answerSet.map(singleAnswer => {
                 return {...singleAnswer, hasBeenChecked: true}
             })
         }))
+        
     }
 
 
