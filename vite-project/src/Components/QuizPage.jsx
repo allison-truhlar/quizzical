@@ -14,7 +14,6 @@ export default function QuizPage(){
             .then(triviaData => {
                 
                 const questionData = triviaData.results.map(result => {
-                    // console.log({...result, id:nanoid()})
                     const question = atob(result.question)
                     const correctAnswer = atob(result.correct_answer)
                     const incorrect_answers = result.incorrect_answers.map(answer => atob(answer))
@@ -26,7 +25,7 @@ export default function QuizPage(){
                         const isCorrectAnswer = (answer==correctAnswer ? true : false)
                         return(
                             {
-                                answerId:answerId,
+                                id:answerId,
                                 answer: answer,
                                 isCorrectAnswer: isCorrectAnswer,
                                 isSelected:false
@@ -57,18 +56,32 @@ export default function QuizPage(){
                 }
                 return array
     }
-       
-    const quizElements = quizData.map(singleQuestion => {
-        const answerArray = singleQuestion.answers
+      
+    function selectAnswer(id){
+        const newQuizData = quizData.map(question => {
+            const updatedAnswers = question.answers.map(answer => {
+                return answer.id === id ? {...answer, isSelected: !answer.isSelected} : answer
+            })
+            return (
+                {
+                    ...question,
+                    answers: updatedAnswers
+                }
+            )
+        })
+        setQuizData(newQuizData)
+    }
 
-        const quizAnswerElements = answerArray.map(answer => {
+    const quizElements = quizData.map(singleQuestion => {
+        const quizAnswerElements = singleQuestion.answers.map(answer => {
             return(
                 <QuizAnswer
-                    key={answer.answerId}
-                    id={answer.answerId}
+                    key={answer.id}
+                    id={answer.id}
                     answer = {answer.answer}
                     isCorrectAnswer = {answer.isCorrectAnswer}
                     isSelected = {answer.isSelected}
+                    selectAnswer = {selectAnswer}
                 />)
         })
         
@@ -84,7 +97,9 @@ export default function QuizPage(){
             </div>
         )
         
-    }) 
+    })
+    
+    
 
     return(
         <div className="quizPage-container">
