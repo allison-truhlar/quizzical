@@ -7,6 +7,7 @@ export default function QuizPage(){
 
     const [quizQuestions, setQuizQuestions] = React.useState([])
     const [quizAnswers, setQuizAnswers] = React.useState([])
+    const [hasBeenChecked, setHasBeenChecked] = React.useState(false)
 
     React.useEffect(()=>{
         fetch("https://opentdb.com/api.php?amount=5&encode=base64")
@@ -77,18 +78,15 @@ export default function QuizPage(){
     }
 
     function checkAnswers(){
+        setHasBeenChecked(oldHasBeenChecked => !oldHasBeenChecked)
+    }
+
+    function countCorrectAnswers(){
         const initialValue = 0
         const correctSelections = quizAnswers.map(answerSet => {
             return answerSet.filter(answer => answer.isCorrectAnswer && answer.isSelected).length
         })
-        const numCorrectSelections = correctSelections.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
-
-        setQuizAnswers(oldQuizAnswers => oldQuizAnswers.map(answerSet => {
-            return answerSet.map(singleAnswer => {
-                return {...singleAnswer, hasBeenChecked: true}
-            })
-        }))
-        
+        return correctSelections.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
     }
 
 
@@ -103,7 +101,7 @@ export default function QuizPage(){
                     answer = {answer.answer}
                     isCorrectAnswer = {answer.isCorrectAnswer}
                     isSelected = {answer.isSelected}
-                    hasBeenChecked = {answer.hasBeenChecked}
+                    hasBeenChecked = {hasBeenChecked}
                     selectAnswer = {selectAnswer}
                 />)
         })
