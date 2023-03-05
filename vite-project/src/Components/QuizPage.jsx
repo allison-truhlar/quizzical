@@ -81,9 +81,7 @@ export default function QuizPage(){
         const correctSelections = quizAnswers.map(answerSet => {
             return answerSet.filter(answer => answer.isCorrectAnswer && answer.isSelected).length
         })
-        console.log(correctSelections)
-        const numCorrectSelection = correctSelections.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
-        console.log(numCorrectSelection)
+        const numCorrectSelections = correctSelections.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
 
         setQuizAnswers(oldQuizAnswers => oldQuizAnswers.map(answerSet => {
             return answerSet.map(singleAnswer => {
