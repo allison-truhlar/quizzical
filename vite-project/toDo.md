@@ -1,4 +1,3 @@
-- fix characters sometimes showing up weird
 - add media queries
 - check accessibility
 - refactor functions that count correct answers and count all answers
