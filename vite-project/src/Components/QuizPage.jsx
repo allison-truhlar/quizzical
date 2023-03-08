@@ -3,10 +3,11 @@ import QuizQuestion from "./QuizQuestion"
 import QuizAnswer from "./QuizAnswer"
 import { nanoid } from 'nanoid'
 
-export default function QuizPage(){
+export default function QuizPage(props){
 
     const [quizQuestions, setQuizQuestions] = React.useState([])
     const [quizAnswers, setQuizAnswers] = React.useState([])
+    const [isComplete, setIsComplete] = React.useState(false)
     const [hasBeenChecked, setHasBeenChecked] = React.useState(false)
 
     React.useEffect(()=>{
@@ -46,6 +47,12 @@ export default function QuizPage(){
             })
     },[])
 
+    React.useEffect(() =>{
+       if (countAnswers() === 5){
+        setIsComplete(true)
+       }
+    },[quizAnswers])
+
  
     function shuffle(array){
             for (let i=0; i<array.length; i++){
@@ -57,6 +64,22 @@ export default function QuizPage(){
                 array[randomIndex] = currentArrayItem
             }
         return array
+    }
+
+    function countAnswers(){
+        const initialValue = 0
+        const selections = quizAnswers.map(answerSet => {
+            return answerSet.filter(answer => answer.isSelected).length
+        })
+        return selections.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
+    }
+
+   function countCorrectAnswers(){
+        const initialValue = 0
+        const correctSelections = quizAnswers.map(answerSet => {
+            return answerSet.filter(answer => answer.isCorrectAnswer && answer.isSelected).length
+        })
+        return correctSelections.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
     }
       
     function selectAnswer(answerId, questionId){
@@ -78,16 +101,15 @@ export default function QuizPage(){
     }
 
     function checkAnswers(){
-        setHasBeenChecked(oldHasBeenChecked => !oldHasBeenChecked)
+        if (!hasBeenChecked){
+            setHasBeenChecked(oldHasBeenChecked => !oldHasBeenChecked)
+        } else if(hasBeenChecked){
+
+        }
+         
     }
 
-    function countCorrectAnswers(){
-        const initialValue = 0
-        const correctSelections = quizAnswers.map(answerSet => {
-            return answerSet.filter(answer => answer.isCorrectAnswer && answer.isSelected).length
-        })
-        return correctSelections.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
-    }
+    
 
 
     const quizElements = quizQuestions.map((question, index) => {
@@ -131,7 +153,8 @@ export default function QuizPage(){
                 }
                 <button 
                     className="quizPage-btn" 
-                    onClick={checkAnswers}
+                    onClick={hasBeenChecked ? props.toggleStartQuiz : checkAnswers}
+                    disabled={isComplete ? false : true}
                 >
                     {hasBeenChecked ? "New Game" : "Check Answers"}
                 </button>
