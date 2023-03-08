@@ -14,7 +14,7 @@ function App() {
     <main>
       <div className="app-container">
         {startQuiz ? 
-          <QuizPage /> : 
+          <QuizPage toggleStartQuiz={toggleStartQuiz}/> : 
           <LandingPage toggleStartQuiz={toggleStartQuiz} />
         }
       </div>
