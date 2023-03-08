@@ -123,9 +123,19 @@ export default function QuizPage(){
     return(
         <div className="quizPage-container">
             {quizElements}
-            <button className="quizPage-btn" onClick={checkAnswers}>
-                {hasBeenChecked ? "New Game" : "Check Answers"}
-            </button>
+            <div className="quizPage-footer">
+                {hasBeenChecked && 
+                    <p className="quizPage-answerCount">
+                        You scored {countCorrectAnswers()}/5 correct answers
+                    </p>
+                }
+                <button 
+                    className="quizPage-btn" 
+                    onClick={checkAnswers}
+                >
+                    {hasBeenChecked ? "New Game" : "Check Answers"}
+                </button>
+            </div>
         </div>
     )
  

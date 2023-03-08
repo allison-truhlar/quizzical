@@ -112,3 +112,15 @@ main{
   cursor: pointer;
 }
 
+.quizPage-footer{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.quizPage-answerCount{
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #293264;
+}
