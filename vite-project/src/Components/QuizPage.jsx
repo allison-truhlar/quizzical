@@ -2,6 +2,7 @@ import React from "react"
 import QuizQuestion from "./QuizQuestion"
 import QuizAnswer from "./QuizAnswer"
 import { nanoid } from 'nanoid'
+import { Base64 } from 'js-base64'
 
 export default function QuizPage(props){
 
@@ -16,14 +17,14 @@ export default function QuizPage(props){
             .then(triviaData => {
                 
                 const questions = triviaData.results.map(result =>{
-                    return atob(result.question)
+                    return Base64.decode(result.question)
                 })
                 
 
                 const answers = triviaData.results.map(result => {
                     const questionId = nanoid()
-                    const correctAnswer = atob(result.correct_answer)
-                    const incorrect_answers = result.incorrect_answers.map(answer => atob(answer))
+                    const correctAnswer = Base64.decode(result.correct_answer)
+                    const incorrect_answers = result.incorrect_answers.map(answer => Base64.decode(answer))
                     const allAnswers = [...incorrect_answers, correctAnswer]
                     const shuffledAnswers = shuffle(allAnswers)
                     
