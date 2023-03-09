@@ -45,13 +45,14 @@ main{
 /* Quiz page ------------------------------------------*/
 
 .quizPage-container{
-  margin: auto;
+  /* border: 1px red solid; */
+  max-height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0 2em 0 2em;
-  max-height: 95%;
-  overflow-y: scroll;
   text-align: left;
+  padding: 2em;
+  overflow-y: scroll;
 }
 
 /* Landing page and Quiz page main buttons --------------------------------------*/
@@ -97,7 +98,6 @@ main{
 .quizAnswer-container{
   display: flex;
   flex-wrap: wrap;
-  
 }
 
 .quizAnswer-btn{
@@ -123,4 +123,34 @@ main{
   font-weight: 700;
   font-size: 0.75rem;
   color: #293264;
+}
+
+/* Media queries --------------------------------------*/
+
+/* Tablets */
+@media (min-width: 768px) {
+  .quizPage-container{
+    /* border: 1px red solid; */
+    padding: 2em 4em;
+  }
+  .quizElement-container{
+    margin-bottom: 1.5em;
+  }
+  .quizQuestion-question{
+    margin-bottom: 1.5em;
+  }
+  .quizAnswer-btn{
+    margin-bottom:2.3em; 
+  }
+  .quizPage-btn{
+    font-size: 0.75rem;
+  }
+}
+
+/* Laptops and desktops */
+@media (min-width: 1024px) {
+  .quizPage-container{
+    /* border: 1px red solid; */
+    padding: 4em 6em;
+  }
 }
