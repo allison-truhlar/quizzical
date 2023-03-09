@@ -20,7 +20,6 @@ export default function QuizPage(props){
                     return Base64.decode(result.question)
                 })
                 
-
                 const answers = triviaData.results.map(result => {
                     const questionId = nanoid()
                     const correctAnswer = Base64.decode(result.correct_answer)
@@ -49,12 +48,11 @@ export default function QuizPage(props){
     },[])
 
     React.useEffect(() =>{
-       if (countAnswers() === 5){
+       if (countAnswers(false) === 5){
         setIsComplete(true)
        }
     },[quizAnswers])
 
- 
     function shuffle(array){
             for (let i=0; i<array.length; i++){
                 const randomIndex = Math.floor(Math.random() * array.length)
@@ -67,20 +65,16 @@ export default function QuizPage(props){
         return array
     }
 
-    function countAnswers(){
+    function countAnswers(onlyCorrect){
         const initialValue = 0
-        const selections = quizAnswers.map(answerSet => {
-            return answerSet.filter(answer => answer.isSelected).length
+        const answersPerQuestion = quizAnswers.map(answerSet => {
+            if(onlyCorrect){
+                return answerSet.filter(answer => answer.isCorrectAnswer && answer.isSelected).length
+            } else{
+                return answerSet.filter(answer => answer.isSelected).length
+            }
         })
-        return selections.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
-    }
-
-   function countCorrectAnswers(){
-        const initialValue = 0
-        const correctSelections = quizAnswers.map(answerSet => {
-            return answerSet.filter(answer => answer.isCorrectAnswer && answer.isSelected).length
-        })
-        return correctSelections.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
+        return answersPerQuestion.reduce((accumulator, currentValue)=>accumulator + currentValue, initialValue)
     }
       
     function selectAnswer(answerId, questionId){
@@ -104,14 +98,8 @@ export default function QuizPage(props){
     function checkAnswers(){
         if (!hasBeenChecked){
             setHasBeenChecked(oldHasBeenChecked => !oldHasBeenChecked)
-        } else if(hasBeenChecked){
-
-        }
-         
+        }          
     }
-
-    
-
 
     const quizElements = quizQuestions.map((question, index) => {
         const correspondingAnswerSet = quizAnswers[index]
@@ -149,7 +137,7 @@ export default function QuizPage(props){
             <div className="quizPage-footer">
                 {hasBeenChecked && 
                     <p className="quizPage-answerCount">
-                        You scored {countCorrectAnswers()}/5 correct answers
+                        You scored {countAnswers(true)}/5 correct answers
                     </p>
                 }
                 <button 
