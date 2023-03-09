@@ -30,7 +30,7 @@ main{
   background-repeat: no-repeat;
 }
 
-/* Landing page --------------------------------------*/
+/* Landing page styles --------------------------------------*/
 
 .landingPage-container{
   margin: auto; 
@@ -42,7 +42,7 @@ main{
   color: #293264;
 }
 
-/* Quiz page ------------------------------------------*/
+/* Quiz page styles ------------------------------------------*/
 
 .quizPage-container{
   /* border: 1px red solid; */
@@ -53,6 +53,19 @@ main{
   text-align: left;
   padding: 2em;
   overflow-y: scroll;
+}
+
+.quizPage-footer{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.quizPage-answerCount{
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #293264;
 }
 
 /* Landing page and Quiz page main buttons --------------------------------------*/
@@ -81,7 +94,7 @@ main{
   padding: 1em 2em;
 }
 
-/* Question question ---------------------------------*/
+/* Question element styles ---------------------------------*/
 
 .quizElement-container{
   margin-bottom: 1em;
@@ -110,19 +123,6 @@ main{
   font-size: 0.65rem;
   color: #293264;
   cursor: pointer;
-}
-
-.quizPage-footer{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.quizPage-answerCount{
-  font-family: 'Inter';
-  font-weight: 700;
-  font-size: 0.75rem;
-  color: #293264;
 }
 
 /* Media queries --------------------------------------*/
