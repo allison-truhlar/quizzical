@@ -1,7 +1,9 @@
 {
-  "name": "vite-project",
+  "name": "quizzical",
   "private": true,
   "version": "0.0.0",
+  "description": "Quiz app using Open Trivia DB API",
+  "author": "Allison Truhlar",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,7 +14,8 @@
     "js-base64": "^3.7.5",
     "nanoid": "^4.0.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "readme-md-generator": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
