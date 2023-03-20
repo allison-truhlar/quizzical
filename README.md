@@ -34,7 +34,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">quizzical</h3>
+<h3 align="center">Quizzical</h3>
 
   <p align="center">
     Quiz app using Open Trivia DB API.
@@ -85,7 +85,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `allison-truhlar`, `quizzical`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `quizzical`, `Quiz app using Open Trivia DB API.`
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `allison-truhlar`, `quizzical`, `twitter_handle`, `allison-truhlar-a3771714b`, `email_client`, `email`, `quizzical`, `Quiz app using Open Trivia DB API.`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -208,8 +208,8 @@ Project Link: [https://github.com/allison-truhlar/quizzical](https://github.com/
 ## Acknowledgments
 
 * [Scrimba](https://scrimba.com)
-* []()
-* []()
+<!-- * []()
+* []() -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -228,7 +228,7 @@ Project Link: [https://github.com/allison-truhlar/quizzical](https://github.com/
 [license-shield]: https://img.shields.io/github/license/allison-truhlar/quizzical.svg?style=for-the-badge
 [license-url]: https://github.com/allison-truhlar/quizzical/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://linkedin.com/in/allison-truhlar-a3771714b
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
