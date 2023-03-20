@@ -37,7 +37,7 @@
 <h3 align="center">Quizzical</h3>
 
   <p align="center">
-    Quiz app using Open Trivia DB API.
+    Quiz app built using the Open Trivia DB API.
     <br />
     <!-- <a href="https://github.com/allison-truhlar/quizzical"><strong>Explore the docs »</strong></a>
     <br />
