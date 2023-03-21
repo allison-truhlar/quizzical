@@ -25,7 +25,7 @@ main{
   width: 90%;
   background: #F5F7FB;
   border-radius: 4px;
-  background-image: url("./yellow-blob.png"), url("./blue-blob.png");
+  background-image: url("../public/yellow-blob.png"), url("../public/blue-blob.png");
   background-position: right top, left bottom;
   background-repeat: no-repeat;
 }
