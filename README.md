@@ -30,14 +30,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/allison-truhlar/quizzical">
+  <!-- <a href="https://github.com/allison-truhlar/quizzical">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
-<h3 align="center">Quizzical</h3>
+<h3 align="center">Quizzical 🤔</h3>
 
   <p align="center">
-    Quiz app built using the Open Trivia DB API.
+    Quiz app built using React and the Open Trivia Database API.
     <br />
     <!-- <a href="https://github.com/allison-truhlar/quizzical"><strong>Explore the docs »</strong></a>
     <br />
@@ -83,9 +83,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://gorgeous-pony-026f0c.netlify.app/)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `allison-truhlar`, `quizzical`, `twitter_handle`, `allison-truhlar-a3771714b`, `email_client`, `email`, `quizzical`, `Quiz app using Open Trivia DB API.`
+Quizzical is a quiz app built using React and the [Open Trivia Database](https://opentdb.com/) API. The design is from a [Scrimba](https://scrimba.com) solo project but all code was developed from scratch.
+
+The app provides users with five questions from Open Trivia Database.  Users can then score their responses and choose to see five new questions.
+<!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `allison-truhlar`, `quizzical`, `twitter_handle`, `allison-truhlar-a3771714b`, `email_client`, `email`, `quizzical`, `Quiz app using Open Trivia DB API.` -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -112,13 +115,13 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- This is an example of how you may give instructions on setting up your project locally. -->
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+<!-- ### Prerequisites -->
 
 <!-- This is an example of how to list things you need to use the software and how to install them. -->
-* npm
+<!-- * npm
   ```sh
   npm install npm@latest -g
-  ```
+  ``` -->
 
 ### Installation
 
@@ -131,23 +134,20 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    npm install
    ```
-<!-- 4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ``` -->
+3. No API key is required to use the Open Trivia Database API.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+<!-- ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
@@ -229,7 +229,7 @@ Project Link: [https://github.com/allison-truhlar/quizzical](https://github.com/
 [license-url]: https://github.com/allison-truhlar/quizzical/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/allison-truhlar-a3771714b
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: ./vite-project/public/Landing-Page-Screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
