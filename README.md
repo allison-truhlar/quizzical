@@ -208,6 +208,7 @@ Project Link: [https://github.com/allison-truhlar/quizzical](https://github.com/
 ## Acknowledgments
 
 * [Scrimba](https://scrimba.com)
+* [README Template from othneildrew](https://github.com/othneildrew/Best-README-Template)
 <!-- * []()
 * []() -->
 
