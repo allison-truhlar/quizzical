@@ -20,35 +20,53 @@ export default function QuizPage(props){
             .then(triviaData => {
                 
                 //Collect data from the response to assign to quizQuestions state
-                const questions = triviaData.results.map(result =>{
-                    return Base64.decode(result.question)
-                })
+                // const questions = triviaData.results.map(result =>{
+                //     return Base64.decode(result.question)
+                // })
                 
                 //Collect data from the response to assign to quizAnswers state
-                const answers = triviaData.results.map(result => {
-                    const questionId = nanoid()
-                    const correctAnswer = Base64.decode(result.correct_answer)
-                    const incorrect_answers = result.incorrect_answers.map(answer => Base64.decode(answer))
-                    const allAnswers = [...incorrect_answers, correctAnswer]
-                    const shuffledAnswers = shuffle(allAnswers)
+                let questionsAndAnswers = []
+                for (let i=0; i<triviaData.results.length; i++){
+                    let currentResult = triviaData.results[i]
+                    let question = Base64.decode(currentResult.question)
+                    let correctAnswer = Base64.decode(currentResult.correct_answer)
+                    let incorrectAnswers = currentResult.incorrect_answers.map(answer => Base64.decode(answer))
+                    let allAnswers = [...incorrectAnswers, correctAnswer]
+                    let shuffledAnswers = shuffle(allAnswers)
+                    questionsAndAnswers[i] = (
+                        {
+                            question: question,
+                            correctAnswer: correctAnswer,
+                            shuffledAnswers: shuffledAnswers
+                        }
+                    )
+                }
+                console.log(questionsAndAnswers)
 
-                    return shuffledAnswers.map(answer =>{
-                        const answerId = nanoid()
-                        const isCorrectAnswer = (answer==correctAnswer ? true : false)
-                        return(
-                            {
-                                questionId: questionId,
-                                answerId:answerId,
-                                answer: answer,
-                                isCorrectAnswer: isCorrectAnswer,
-                                isSelected: false,
-                                hasBeenChecked: {hasBeenChecked}
-                            }
-                        )
-                    })   
-                })
-                setQuizQuestions(questions)
-                setQuizAnswers(answers)
+                // const answers = triviaData.results.map(result => {
+                //     const questionId = nanoid()
+                //     const correctAnswer = Base64.decode(result.correct_answer)
+                //     const incorrect_answers = result.incorrect_answers.map(answer => Base64.decode(answer))
+                //     const allAnswers = [...incorrect_answers, correctAnswer]
+                //     const shuffledAnswers = shuffle(allAnswers)
+
+                //     return shuffledAnswers.map(answer =>{
+                //         const answerId = nanoid()
+                //         const isCorrectAnswer = (answer==correctAnswer ? true : false)
+                //         return(
+                //             {
+                //                 questionId: questionId,
+                //                 answerId:answerId,
+                //                 answer: answer,
+                //                 isCorrectAnswer: isCorrectAnswer,
+                //                 isSelected: false,
+                //                 hasBeenChecked: {hasBeenChecked}
+                //             }
+                //         )
+                //     })   
+                // })
+                // setQuizQuestions(questions)
+                // setQuizAnswers(answers)
             })
     },[])
 
