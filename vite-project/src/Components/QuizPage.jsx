@@ -42,7 +42,7 @@ export default function QuizPage(props){
                                 answer: answer,
                                 isCorrectAnswer: isCorrectAnswer,
                                 isSelected: false,
-                                hasBeenChecked: false
+                                hasBeenChecked: {hasBeenChecked}
                             }
                         )
                     })   
